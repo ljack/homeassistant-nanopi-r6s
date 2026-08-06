@@ -1,0 +1,8 @@
+*.img
+*.img.gz
+*.img.xz
+*.sha
+MiniLoaderAll.bin
+idbloader.img
+uboot.img
+rkdeveloptool

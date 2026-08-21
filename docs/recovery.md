@@ -33,6 +33,31 @@ check for any card or image:
 sudo dd if=/dev/rdiskN bs=512 skip=64 count=2 2>/dev/null | xxd | head -2
 ```
 
+### If your computer only has USB-C
+
+A plain "USB-C to USB-A" cable **will not work**. In maskrom the R6S is the USB *device* and its
+device port is the full-size **Type-A** socket (its USB-C is power-only — PD input, no data). So the
+board needs an A plug and your computer must present a USB-A **host** port. A standard C-to-A cable
+is wired for the opposite roles (A plug into the host, C plug into a device); reversing it does not
+work electrically.
+
+Chain it instead:
+
+```
+computer USB-C -> [hub/dock with a USB-A socket] -> [A-to-A cable] -> R6S USB 3.0 Type-A
+                   ^ provides the USB-A HOST port     ^ both ends full-size A male
+```
+
+Or skip the problem: any older laptop/desktop with a built-in USB-A port works, and on Windows you
+can use Rockchip's RKDevTool GUI instead of building `rkdeveloptool`.
+
+> ⚠️ **Buy a *passive* A-to-A cable.** Most two-A-plug products are "USB data transfer / bridge /
+> link" cables with a chip inside for PC-to-PC file copying. Those are active devices, not a wire,
+> and will not work.
+
+The wiki doesn't say which of the two Type-A ports to use. Try **USB 3.0** first; if
+`rkdeveloptool ld` reports `not found any devices!`, try the USB 2.0 port before assuming a fault.
+
 ---
 
 ## Building `rkdeveloptool` on macOS

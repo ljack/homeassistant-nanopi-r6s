@@ -35,7 +35,9 @@ FriendlyELEC document the same outcome in their wiki:
 
 **Therefore: build the maskrom recovery kit *before* you touch eMMC.** See
 [docs/recovery.md](docs/recovery.md). You will need a **USB A-to-A cable** — the R6S enters maskrom
-over its USB 3.0 Type-A port, not USB-C. Without that cable and kit you have no way back.
+over its USB 3.0 Type-A port, not USB-C. If your computer only has USB-C you also need a hub
+that provides a USB-A *host* port; a plain C-to-A cable will not work. Without that cable and
+kit you have no way back.
 
 ---
 
